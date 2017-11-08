@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'zuimao';
+  src:  url('fonts/zuimao.eot?6ooh7w');
+  src:  url('fonts/zuimao.eot?6ooh7w#iefix') format('embedded-opentype'),
+    url('fonts/zuimao.ttf?6ooh7w') format('truetype'),
+    url('fonts/zuimao.woff?6ooh7w') format('woff'),
+    url('fonts/zuimao.svg?6ooh7w#zuimao') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'zuimao' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-back:before {
+  content: "\e900";
+}
+.icon-edit:before {
+  content: "\e901";
+}
+.icon-hot:before {
+  content: "\e902";
+  color: #979797;
+}
+.icon-image:before {
+  content: "\e903";
+}
+.icon-more:after {
+  content: "\e904";
+}
+.icon-put:before {
+  content: "\e905";
+}
+.icon-report:before {
+  content: "\e906";
+}
+.icon-search:before {
+  content: "\e907";
+}
+.icon-user:before {
+  content: "\e908";
+}
+.icon-yen:before {
+  content: "\e909";
+}
+.icon-zhuan:before {
+  content: "\e90a";
+}
