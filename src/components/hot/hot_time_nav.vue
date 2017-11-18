@@ -24,7 +24,6 @@ export default {
       swiperOption: {
         autoplay: 0,
         slidesPerView: 5,
-        slidesPerGroup: 5,
         centeredSlides: true,
         spaceBetween: 20,
         direction: 'horizontal'

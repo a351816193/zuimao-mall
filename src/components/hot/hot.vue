@@ -9,7 +9,7 @@
 import focus from '../focus/focus.vue'
 import hot_time_nav from '../hot/hot_time_nav.vue'
 export default {
-  data(){
+  data () {
     return {
       isFixed: false
     }
