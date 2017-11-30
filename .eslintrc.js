@@ -26,6 +26,12 @@ module.exports = {
     'properties': 'off',
     'camelcase': 'off',
     'space-before-function-paren': [0, 'always'],
-    "semi": [0]
+    "semi": [0],
+    "no-unused-vars": [0, {
+      // 允许声明未使用变量
+    "vars": "local",
+      // 参数不检查
+    "args": "none"
+    }]
   }
 }

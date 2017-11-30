@@ -1,40 +1,100 @@
 <template>
   <swiper  id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
-      <swiper-slide class="nav-item"><a href=""><i class="time">昨日</i><br><span class="statu">别错过</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">20:00</i><br><span class="statu">昨日精选</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">21:00</i><br><span class="statu">昨日精选</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">09:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">10:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">11:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">12:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">14:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">16:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">19:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">20:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><i class="time">21:00</i><br><span class="statu">抢购中</span></a></swiper-slide>
-      <swiper-slide class="nav-item"><a href=""><img class="tomorrow" src="images/tomorrow.png"></a></swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products"><i class="time">昨日</i><br><span class="statu">别错过</span>
+        </router-link>
+      </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products"><i class="time">20:00</i><br><span class="statu">昨日精选</span>
+        </router-link>
+      </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products"><i class="time">21:00</i><br><span class="statu">昨日精选</span>
+        </router-link>
+      </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">09:00</i><br><span class="statu">抢购中</span>
+        </router-link>
+      </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">10:00</i><br><span class="statu">抢购中</span>
+        </router-link>
+      </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">11:00</i>
+          <br><span class="statu">抢购中</span>
+        </router-link>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">12:00</i>
+          <br><span class="statu">抢购中</span>
+        </router-link>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">14:00</i>
+          <br><span class="statu">抢购中</span>
+        </router-link>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">16:00</i>
+          <br><span class="statu">抢购中</span>
+        </router-link>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">19:00</i>
+          <br><span class="statu">抢购中</span>
+        </router-link>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">20:00</i>
+          <br><span class="statu">抢购中</span>
+        </router-link>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <i class="time">21:00</i>
+          <br><span class="statu">抢购中</span>
+        </router-link>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+        <router-link to="/hot_products">
+          <img class="tomorrow" src="./../../assets/images/tomorrow.png">
+        </router-link>
+      </swiper-slide>
   </swiper>
+  <!--<router-view></router-view>-->
 </template>
 <script type="text/javascript">
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-export default {
-  name: 'menu_nav',
-  data () {
-    return {
-      swiperOption: {
-        autoplay: 0,
-        slidesPerView: 5,
-        centeredSlides: true,
-        spaceBetween: 20,
-        direction: 'horizontal'
+  import Vue from 'vue'
+  import { swiper, swiperSlide } from 'vue-awesome-swiper'
+  import axios from 'axios'
+  import VueAxios from 'vue-axios'
+  Vue.use(VueAxios, axios)
+  export default {
+    data () {
+      return {
+        swiperOption: {
+          autoplay: 0,
+          slidesPerView: 5,
+          centeredSlides: true,
+          spaceBetween: 20,
+          direction: 'horizontal'
+        }
       }
+    },
+    components: {
+      'swiper': swiper,
+      'swiper-slide': swiperSlide
     }
-  },
-  components: {
-    'swiper': swiper,
-    'swiper-slide': swiperSlide
   }
-}
 </script>
 <style lang="scss">
 @import './../../common/sass/global.scss';
@@ -54,44 +114,30 @@ export default {
     }
     .nav-item
     {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display:         flex;
+      height: 1.6rem;
+      @include ver_center;
 
-        text-align: center;
-
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-                justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-                align-items: center;
-    }
-    a
-    {
+      a
+      {
         font-size: 20px;
-        height: 0.533333rem;
-        padding: .133333rem;
-
+        height: 1.16rem;
+        padding: .2rem 0;
         text-align: center;
-
         color: #4d4d4d;
-    }
-    .tomorrow
-    {
-        width: 50px;
-    }
-    .time
-    {
+      }
+      .tomorrow
+      {
+        width: 1.76rem;
+      }
+      .time
+      {
         font-size: 18px;
         font-weight: bold;
-    }
-    .statu
-    {
+      }
+      .statu
+      {
         font-size: 10px;
+      }
     }
 }
 

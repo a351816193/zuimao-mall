@@ -1,12 +1,16 @@
 <template>
-  <swiper :options="swiperOption">
-      <swiper-slide class="menu-item active"><a href="#">进口红酒</a></swiper-slide>
-      <swiper-slide class="menu-item"><a href="#">进口红酒</a></swiper-slide>
-      <swiper-slide class="menu-item"><a href="#">进口红酒</a></swiper-slide>
-      <swiper-slide class="menu-item"><a href="#">进口红酒</a></swiper-slide>
-      <swiper-slide class="menu-item"><a href="#">进口红酒</a></swiper-slide>
-      <swiper-slide class="menu-item"><a href="#">进口红酒</a></swiper-slide>
-  </swiper>
+  <div>
+    <swiper :options="swiperOption">
+      <swiper-slide class="menu-item active"><router-link to="/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
+    </swiper>
+    <router-view></router-view>
+  </div>
+
 </template>
 <style lang="scss">
 @import './../../common/sass/global.scss';
@@ -15,15 +19,14 @@
 {
 
     width: 100%;
-    overflow: hidden;
     .menu-item
     {
         font-size: 14px;
-        width: 1.333333rem;
+        width: 20%;
         text-align: center;
         a
         {
-            line-height: .6rem;
+            line-height: 1.2rem;
 
             display: inline-block;
 

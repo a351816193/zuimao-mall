@@ -30,39 +30,22 @@ export default {
 </script>
 <style lang="scss">
 @import './../../common/swiper-3.4.2.min.css';
+@import './../../common/sass/global.scss';
 .focus
 {
     .swiper-slide
     {
-        font-size: 18px;
-        /* Center slide text vertically */
-
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display:         flex;
-
-        text-align: center;
-
-        background: #fff;
-
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-                justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-                align-items: center;
-        img
-        {
-            width: 100%;
-        }
+        width: 10rem;
+        height: 4.33333rem;
+      img
+      {
+        width: 100%;
+        height: 100%;
+      }
     }
     .swiper-pagination-bullet-active
     {
         width: 16px;
-
         border-radius: 3px;
         background: #fff;
     }

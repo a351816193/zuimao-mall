@@ -28,8 +28,8 @@ export default {
     top: 0;
     right: 0;
     left: 0;
-    height: .6rem;
-
+    height: 1.066667rem;
+    margin: 0 auto;
     background: $primarycolor;
     .header-warpper
     {
@@ -48,9 +48,10 @@ export default {
         .icon
         {
             width: 0.666667rem;
-            font-size: 26px;
+            font-size: 18px;
             color: #fff;
-            line-height: .6rem;
+            line-height: 1.066667rem;
+            padding: 0 .133333rem;
         }
         .nav-wrap-left,
         .nav-wrap-right
@@ -68,15 +69,10 @@ export default {
         .centermenu
         {
             display: block;
-            font-size: .24rem;
+            font-size: 18px;
 
             text-align: center;
-
-            -webkit-box-flex: 1;
-               -moz-box-flex: 1;
-            -webkit-flex: 1;
-                -ms-flex: 1;
-                    flex: 1;
+            flex: 1;
             i
             {
                 color: #eee;
