@@ -1,76 +1,81 @@
 <template>
+  <div>
   <swiper  id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products"><i class="time">昨日</i><br><span class="statu">别错过</span>
+        <router-link to="hot/hot_products">
+          <i class="time">昨日</i><br><span class="statu">别错过</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products"><i class="time">20:00</i><br><span class="statu">昨日精选</span>
+        <router-link to="hot/hot_products">
+          <i class="time">20:00</i><br><span class="statu">昨日精选</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products"><i class="time">21:00</i><br><span class="statu">昨日精选</span>
+        <router-link to="hot/hot_products">
+          <i class="time">21:00</i><br><span class="statu">昨日精选</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">09:00</i><br><span class="statu">抢购中</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">10:00</i><br><span class="statu">抢购中</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">11:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">12:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">14:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">16:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">19:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">20:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <i class="time">21:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="/hot_products">
+        <router-link to="hot/hot_products">
           <img class="tomorrow" src="./../../assets/images/tomorrow.png">
         </router-link>
       </swiper-slide>
   </swiper>
-  <!--<router-view></router-view>-->
+  <router-view></router-view>
+</div>
 </template>
 <script type="text/javascript">
   import Vue from 'vue'
@@ -86,6 +91,7 @@
           slidesPerView: 5,
           centeredSlides: true,
           spaceBetween: 20,
+          initialSlide: this.nowActiveIndex(),
           direction: 'horizontal'
         }
       }
@@ -93,6 +99,59 @@
     components: {
       'swiper': swiper,
       'swiper-slide': swiperSlide
+    },
+    methods: {
+      nowActiveIndex () {
+        let nowHour = new Date().getHours();
+        switch (nowHour) {
+          case 0:
+            return 11;
+          case 1:
+            return 0;
+          case 2:
+            return 0;
+          case 3:
+            return 0;
+          case 4:
+            return 0;
+          case 5:
+            return 1;
+          case 6:
+            return 1;
+          case 7:
+            return 2;
+          case 8:
+            return 2;
+          case 9:
+            return 3;
+          case 10:
+            return 4;
+          case 11:
+            return 5;
+          case 12:
+            return 6;
+          case 13:
+            return 6;
+          case 14:
+            return 7;
+          case 15:
+            return 7;
+          case 16:
+            return 8;
+          case 17:
+            return 8;
+          case 18:
+            return 8;
+          case 19:
+            return 9;
+          case 20:
+            return 10;
+          case 21:
+            return 11;
+          default:
+            return 12;
+        }
+      }
     }
   }
 </script>
