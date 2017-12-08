@@ -4,79 +4,78 @@
     <v-adv></v-adv>
     <swiper  id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=0">
           <i class="time">昨日</i><br><span class="statu">别错过</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="no_hot">
+        <router-link href="?time=1">
           <i class="time">20:00</i><br><span class="statu">昨日精选</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=2">
           <i class="time">21:00</i><br><span class="statu">昨日精选</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=3">
           <i class="time">09:00</i><br><span class="statu">抢购中</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=4">
           <i class="time">10:00</i><br><span class="statu">抢购中</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=5">
           <i class="time">11:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=6">
           <i class="time">12:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=7">
           <i class="time">14:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=8">
           <i class="time">16:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=9">
           <i class="time">19:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=10">
           <i class="time">20:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=11">
           <i class="time">21:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link href="?time=12">
           <img class="tomorrow" src="./../../assets/images/tomorrow.png">
         </router-link>
       </swiper-slide>
     </swiper>
-    <router-view></router-view>
   </div>
 </template>
 <script type="text/javascript">
@@ -170,14 +169,15 @@ export default {
     getproducts () {
       let productsAPI = '../../../static/products.json'
       axios.get(productsAPI).then(res => {
-        console.log(res)
+        return res.data.products
       })
     }
   },
   created () {
     let productsAPI = '../../../static/products.json'
     axios.get(productsAPI).then(res => {
-      this.products = res.data;
+      this.products = res.data.products[this.nowActiveIndex()];
+      console.log(this.products)
     })
   }
 
