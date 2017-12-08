@@ -2,87 +2,88 @@
   <div>
     <v-focus></v-focus>
     <v-adv></v-adv>
-    <swiper  id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
-      <swiper-slide class="nav-item">
-        <router-link href="?time=0">
+    <swiper @click="getproducts" id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=0">
           <i class="time">昨日</i><br><span class="statu">别错过</span>
         </router-link>
       </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=1">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=1">
           <i class="time">20:00</i><br><span class="statu">昨日精选</span>
         </router-link>
       </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=2">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=2">
           <i class="time">21:00</i><br><span class="statu">昨日精选</span>
         </router-link>
       </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=3">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=3">
           <i class="time">09:00</i><br><span class="statu">抢购中</span>
         </router-link>
       </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=4">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=4">
           <i class="time">10:00</i><br><span class="statu">抢购中</span>
         </router-link>
       </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=5">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=5">
           <i class="time">11:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=6">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=6">
           <i class="time">12:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=7">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=7">
           <i class="time">14:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=8">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=8">
           <i class="time">16:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=9">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=9">
           <i class="time">19:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=10">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=10">
           <i class="time">20:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=11">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=11">
           <i class="time">21:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link href="?time=12">
+      <swiper-slide @click="getproducts" class="nav-item">
+        <router-link  to="?time=12">
           <img class="tomorrow" src="./../../assets/images/tomorrow.png">
         </router-link>
       </swiper-slide>
     </swiper>
+    <v-products :ontimePro="products"></v-products>
   </div>
 </template>
 <script type="text/javascript">
 import Vue from 'vue'
 import focus from '../focus/focus.vue'
 import adv from '../adv/adv.vue'
-// import hot_time_nav from './hot_time_nav.vue'
+import c_products from '../products/products.vue'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -99,18 +100,18 @@ export default {
         initialSlide: this.nowActiveIndex(),
         direction: 'horizontal'
       },
-      products: {}
+      products: []
     }
   },
   components: {
     'v-focus': focus,
     'v-adv': adv,
-    // 'hot-time-nav': hot_time_nav,
     'swiper': swiper,
-    'swiper-slide': swiperSlide
+    'swiper-slide': swiperSlide,
+    'v-products': c_products
   },
   methods: {
-    nowActiveIndex () {
+    nowActiveIndex: function () {
       let nowHour = new Date().getHours();
       switch (nowHour) {
         case 0:
@@ -160,24 +161,21 @@ export default {
         default:
           return 12;
       }
+    },
+    getproducts: function() {
+      console.log('是的发送到')
+      let productsAPI = '../../../static/products.json'
+      axios.get(productsAPI).then(res => {
+        this.products = res.data.products[this.$route.query.time]
+      })
     }
   },
   computed: {
-    fixedNav () {
-
-    },
-    getproducts () {
-      let productsAPI = '../../../static/products.json'
-      axios.get(productsAPI).then(res => {
-        return res.data.products
-      })
-    }
   },
   created () {
     let productsAPI = '../../../static/products.json'
     axios.get(productsAPI).then(res => {
       this.products = res.data.products[this.nowActiveIndex()];
-      console.log(this.products)
     })
   }
 

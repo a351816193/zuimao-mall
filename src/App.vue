@@ -3,6 +3,7 @@
     <v-header></v-header>
     <div class="content">
       <v-menu-nav class="nav-menu" id="menu"></v-menu-nav>
+      <router-view></router-view>
     </div>
   </div>
 </template>

@@ -1,14 +1,14 @@
 <template>
     <div class="product-list">
-        <div v-for="pro in products">
-            <a href="{{ pro.pro_url }}">
-                <img class="product-name" src="{{ pro.img_src }}">
+        <div v-for="pro in ontimePro" class="product ">
+            <a :href="pro.pro_url" class="product-info">
+                <img class="product-img" :src="pro.img_src">
                 <div class="caption">
-                    <i>{{ pro.tag }}</i>
+                    <i class="icon-hot">{{ pro.tag }}</i>
                     <b>{{ pro.pro_title }}</b>
                 </div>
                 <p class="price">
-                    <span class="ori-price icon-yen">{{ pro.title }}</span>
+                    <span class="ori-price icon-yen">{{ pro.price }}</span>
                     /<span class="earn icon-zhuan">{{ pro.own }}</span>
                 </p>
             </a>
@@ -28,17 +28,19 @@
 <script type="text/javascript">
   export default {
     data () {
-        return{
-
-        }
+      return {
+      }
     },
-    props: {
-        pro
+    props: [
+      'ontimePro'
+    ],
+    created () {
+      console.log(this.ontimePro)
     }
-
   }
 </script>
 <style lang="scss">
+@import './../../common/sass/global.scss';
 .product-list {
     .product {
         width: 100%;
@@ -52,9 +54,9 @@
             width: 100%;
         }
         .product-img {
-            display: inline-block;
+            // display: inline-block;
 
-            width: 10rem;
+            width: 100%;
             height: 4.533333rem;
         }
         .caption {

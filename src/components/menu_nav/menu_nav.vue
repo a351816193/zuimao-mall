@@ -8,9 +8,7 @@
       <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
       <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
     </swiper>
-    <router-view></router-view>
   </div>
-
 </template>
 <style lang="scss">
 @import './../../common/sass/global.scss';
