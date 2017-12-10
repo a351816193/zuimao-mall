@@ -1,159 +1,115 @@
 <template>
-  <div>
-  <swiper  id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
+    <swiper ref="hot-time-nav" id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=0">
           <i class="time">昨日</i><br><span class="statu">别错过</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=1">
           <i class="time">20:00</i><br><span class="statu">昨日精选</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=2">
           <i class="time">21:00</i><br><span class="statu">昨日精选</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=3">
           <i class="time">09:00</i><br><span class="statu">抢购中</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=4">
           <i class="time">10:00</i><br><span class="statu">抢购中</span>
         </router-link>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=5">
           <i class="time">11:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=6">
           <i class="time">12:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=7">
           <i class="time">14:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=8">
           <i class="time">16:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=9">
           <i class="time">19:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=10">
           <i class="time">20:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=11">
           <i class="time">21:00</i>
           <br><span class="statu">抢购中</span>
         </router-link>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link to="hot/hot_products">
+        <router-link  to="?time=12">
           <img class="tomorrow" src="./../../assets/images/tomorrow.png">
         </router-link>
       </swiper-slide>
-  </swiper>
-  <router-view></router-view>
-</div>
+    </swiper>
 </template>
 <script type="text/javascript">
-  import Vue from 'vue'
-  import { swiper, swiperSlide } from 'vue-awesome-swiper'
-  import axios from 'axios'
-  import VueAxios from 'vue-axios'
-  Vue.use(VueAxios, axios)
-  export default {
-    data () {
-      return {
-        swiperOption: {
-          autoplay: 0,
-          slidesPerView: 5,
-          centeredSlides: true,
-          spaceBetween: 20,
-          initialSlide: this.nowActiveIndex(),
-          direction: 'horizontal'
-        }
-      }
-    },
-    components: {
-      'swiper': swiper,
-      'swiper-slide': swiperSlide
-    },
-    methods: {
-      nowActiveIndex () {
-        let nowHour = new Date().getHours();
-        switch (nowHour) {
-          case 0:
-            return 11;
-          case 1:
-            return 0;
-          case 2:
-            return 0;
-          case 3:
-            return 0;
-          case 4:
-            return 0;
-          case 5:
-            return 1;
-          case 6:
-            return 1;
-          case 7:
-            return 2;
-          case 8:
-            return 2;
-          case 9:
-            return 3;
-          case 10:
-            return 4;
-          case 11:
-            return 5;
-          case 12:
-            return 6;
-          case 13:
-            return 6;
-          case 14:
-            return 7;
-          case 15:
-            return 7;
-          case 16:
-            return 8;
-          case 17:
-            return 8;
-          case 18:
-            return 8;
-          case 19:
-            return 9;
-          case 20:
-            return 10;
-          case 21:
-            return 11;
-          default:
-            return 12;
-        }
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+export default {
+  data () {
+    return {
+      // swiperActiveIndex: this.$refs['hot-time-nav'].swiper.activeIndex,
+      swiperOption: {
+        autoplay: 0,
+        slidesPerView: 5,
+        centeredSlides: true,
+        spaceBetween: 20,
+        initialSlide: this.CnowTimeIndex,
+        direction: 'horizontal',
+        onSlideChangeEnd: this.getTimeIndex
       }
     }
+  },
+  components: {
+    'swiper': swiper,
+    'swiper-slide': swiperSlide
+  },
+  props: [
+    'CnowTimeIndex'
+  ],
+  methods: {
+    getTimeIndex: function() {
+      // console.log(this.$props.CnowTimeIndex)
+      // let productsAPI = '../../../static/products.json'
+      // this.products = res.data.products[this.$refs['hot-time-nav'].swiper.activeIndex];
+      this.$emit('listenGetTimeIndex', this.$refs['hot-time-nav'].swiper.activeIndex)
+      // console.log(this.$refs['hot-time-nav'].swiper.activeIndex)
+      // axios.get(productsAPI).then(res => {
+      // })
+    }
   }
+}
 </script>
 <style lang="scss">
 @import './../../common/sass/global.scss';

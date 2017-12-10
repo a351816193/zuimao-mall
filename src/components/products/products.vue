@@ -50,14 +50,14 @@
         background-color: #fff;
         .product-info {
             display: inline-block;
-
-            width: 100%;
+            width: 10rem;
+            height: 4.533333rem;
         }
         .product-img {
             // display: inline-block;
 
             width: 100%;
-            height: 4.533333rem;
+            height: 100%;
         }
         .caption {
             font-size: 16px;
