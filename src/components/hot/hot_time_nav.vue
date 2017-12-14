@@ -1,5 +1,6 @@
 <template>
-    <swiper ref="hot-time-nav" id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
+  <div>
+        <swiper ref="hot-time-nav" id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
       <swiper-slide class="nav-item">
         <router-link  to="?time=0">
           <i class="time">昨日</i><br><span class="statu">别错过</span>
@@ -73,19 +74,20 @@
         </router-link>
       </swiper-slide>
     </swiper>
+  </div>
+
 </template>
 <script type="text/javascript">
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
   data () {
     return {
-      // swiperActiveIndex: this.$refs['hot-time-nav'].swiper.activeIndex,
       swiperOption: {
         autoplay: 0,
         slidesPerView: 5,
         centeredSlides: true,
         spaceBetween: 20,
-        initialSlide: this.CnowTimeIndex,
+        initialSlide: this.$store.state.nowIndex,
         direction: 'horizontal',
         onSlideChangeEnd: this.getTimeIndex
       }
@@ -95,19 +97,17 @@ export default {
     'swiper': swiper,
     'swiper-slide': swiperSlide
   },
-  props: [
-    'CnowTimeIndex'
-  ],
   methods: {
     getTimeIndex: function() {
-      // console.log(this.$props.CnowTimeIndex)
-      // let productsAPI = '../../../static/products.json'
-      // this.products = res.data.products[this.$refs['hot-time-nav'].swiper.activeIndex];
-      this.$emit('listenGetTimeIndex', this.$refs['hot-time-nav'].swiper.activeIndex)
-      // console.log(this.$refs['hot-time-nav'].swiper.activeIndex)
-      // axios.get(productsAPI).then(res => {
-      // })
+      this.$nextTick(function() {
+        this.$store.commit({
+          type: 'updateActiveIndex',
+          activeIndex: this.$refs['hot-time-nav'].swiper.activeIndex
+        })
+      })
     }
+  },
+  created () {
   }
 }
 </script>

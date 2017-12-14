@@ -2,8 +2,8 @@
   <div>
     <v-focus></v-focus>
     <v-adv></v-adv>
-    <hot-time-nav :CnowTimeIndex="PnowTimeIndex"></hot-time-nav>
-    <v-products :ontimePro="products" v-on:listenGetTimeIndex="getProducts"></v-products>
+    <hot-time-nav></hot-time-nav>
+    <v-products :products='get_hot_products'></v-products>
   </div>
 </template>
 <script type="text/javascript">
@@ -14,13 +14,11 @@ import c_products from '../products/products.vue'
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import nowTimeIndex from '../../assets/js/nowTimeIndex'
 Vue.use(VueAxios, axios)
 export default {
   data () {
     return {
-      products: [],
-      PnowTimeIndex: nowTimeIndex.nowTimeIndex()
+      hot_products: []
     }
   },
   components: {
@@ -30,23 +28,16 @@ export default {
     'v-products': c_products
   },
   methods: {
-    getProducts: function(activeTimeIndex) {
-      let productsAPI = '../../../static/products.json'
-      console.log(activeTimeIndex)
-      axios.get(productsAPI).then(res => {
-        this.products = res.data.products[activeTimeIndex];
-      })
-    }
-  },
-  computed: {
 
   },
-  created () {
-    let productsAPI = '../../../static/products.json'
-    axios.get(productsAPI).then(res => {
-      this.products = res.data.products[this.PnowTimeIndex];
-      // console.log(this.getProducts())
-    })
+  computed: {
+    get_hot_products: function() {
+      let productsAPI = '../../../static/products.json'
+      let cc = axios.get(productsAPI).then(res => {
+        console.log(this.$store.state.activeIndex)
+        return res.data.products[this.$store.state.activeIndex];
+      })
+    }
   }
 }
 </script>

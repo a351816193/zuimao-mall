@@ -1,28 +1,28 @@
 <template>
     <div class="product-list">
-        <div v-for="pro in ontimePro" class="product ">
-            <a :href="pro.pro_url" class="product-info">
-                <img class="product-img" :src="pro.img_src">
-                <div class="caption">
-                    <i class="icon-hot">{{ pro.tag }}</i>
-                    <b>{{ pro.pro_title }}</b>
-                </div>
-                <p class="price">
-                    <span class="ori-price icon-yen">{{ pro.price }}</span>
-                    /<span class="earn icon-zhuan">{{ pro.own }}</span>
-                </p>
-            </a>
-            <div class="pcs-action">
-                <div class="pcs">
-                    库存{{ pro.stock }}
-                </div>
-                <div class="more-actions">
-                    <i class="icon-put"></i>
-                    <i class="icon-image"></i>
-                    <i class="icon-report"></i>
-                </div>
-            </div>
-        </div>
+      <div v-for="pro in products" class="product ">
+          <a :href="pro.pro_url" class="product-info">
+              <img class="product-img" :src="pro.img_src">
+              <div class="caption">
+                  <i class="icon-hot">{{ pro.tag }}</i>
+                  <b>{{ pro.pro_title }}</b>
+              </div>
+              <p class="price">
+                  <span class="ori-price icon-yen">{{ pro.price }}</span>
+                  /<span class="earn icon-zhuan">{{ pro.own }}</span>
+              </p>
+          </a>
+          <div class="pcs-action">
+              <div class="pcs">
+                  库存{{ pro.stock }}
+              </div>
+              <div class="more-actions">
+                  <i class="icon-put"></i>
+                  <i class="icon-image"></i>
+                  <i class="icon-report"></i>
+              </div>
+          </div>
+      </div>
     </div>
 </template>
 <script type="text/javascript">
@@ -32,10 +32,9 @@
       }
     },
     props: [
-      'ontimePro'
+      'products'
     ],
     created () {
-      console.log(this.ontimePro)
     }
   }
 </script>
