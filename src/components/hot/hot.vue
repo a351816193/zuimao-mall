@@ -3,7 +3,7 @@
     <v-focus></v-focus>
     <v-adv></v-adv>
     <hot-time-nav></hot-time-nav>
-    <v-products :products='get_hot_products'></v-products>
+    <v-products :products='hot_products'></v-products>
   </div>
 </template>
 <script type="text/javascript">
@@ -32,12 +32,20 @@ export default {
   },
   computed: {
     get_hot_products: function() {
-      let productsAPI = '../../../static/products.json'
-      let cc = axios.get(productsAPI).then(res => {
+      let productsAPI = '../../../static/products.json';
+      axios.get(productsAPI).then(res => {
         console.log(this.$store.state.activeIndex)
-        return res.data.products[this.$store.state.activeIndex];
+        this.hot_products = res.data.products[this.$store.state.activeIndex];
+        console.log(this.hot_products)
       })
     }
+  },
+  created() {
+    let productsAPI = '../../../static/products.json';
+    axios.get(productsAPI).then(res => {
+      console.log(this.$store.state.activeIndex)
+      this.hot_products = res.data.products[this.$store.state.activeIndex];
+    })
   }
 }
 </script>

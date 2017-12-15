@@ -87,7 +87,7 @@ export default {
         slidesPerView: 5,
         centeredSlides: true,
         spaceBetween: 20,
-        initialSlide: this.$store.state.nowIndex,
+        initialSlide: this.$store.state.activeIndex,
         direction: 'horizontal',
         onSlideChangeEnd: this.getTimeIndex
       }
@@ -101,9 +101,10 @@ export default {
     getTimeIndex: function() {
       this.$nextTick(function() {
         this.$store.commit({
-          type: 'updateActiveIndex',
+          type: 'updateTimeIndex',
           activeIndex: this.$refs['hot-time-nav'].swiper.activeIndex
         })
+        console.log(this.$store.state.activeIndex);
       })
     }
   },
