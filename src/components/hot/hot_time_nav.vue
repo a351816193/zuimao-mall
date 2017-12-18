@@ -90,7 +90,8 @@ export default {
         initialSlide: this.$store.state.activeIndex,
         direction: 'horizontal',
         onSlideChangeEnd: this.getTimeIndex
-      }
+      },
+      current: this.$store.state.activeIndex
     }
   },
   components: {
@@ -104,11 +105,17 @@ export default {
           type: 'updateTimeIndex',
           activeIndex: this.$refs['hot-time-nav'].swiper.activeIndex
         })
-        console.log(this.$store.state.activeIndex);
+        this.current = this.$refs['hot-time-nav'].swiper.activeIndex;
+        this.$emit('updateTimeIndex', this.current);
       })
     }
   },
-  created () {
+  watch: {
+    current: function() {
+      this.$nextTick(function() {
+        console.log(this.current)
+      })
+    }
   }
 }
 </script>

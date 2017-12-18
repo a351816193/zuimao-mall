@@ -2,7 +2,7 @@
   <div>
     <v-focus></v-focus>
     <v-adv></v-adv>
-    <hot-time-nav></hot-time-nav>
+    <hot-time-nav @updateTimeIndex="get_hot_products"></hot-time-nav>
     <v-products :products='hot_products'></v-products>
   </div>
 </template>
@@ -28,17 +28,15 @@ export default {
     'v-products': c_products
   },
   methods: {
-
-  },
-  computed: {
     get_hot_products: function() {
       let productsAPI = '../../../static/products.json';
       axios.get(productsAPI).then(res => {
-        console.log(this.$store.state.activeIndex)
         this.hot_products = res.data.products[this.$store.state.activeIndex];
-        console.log(this.hot_products)
       })
     }
+  },
+  computed: {
+
   },
   created() {
     let productsAPI = '../../../static/products.json';
