@@ -106,7 +106,9 @@ export default {
           activeIndex: this.$refs['hot-time-nav'].swiper.activeIndex
         })
         this.current = this.$refs['hot-time-nav'].swiper.activeIndex;
+        // 触发事件updateTimeIndex, 调用hot组件中的get_hot_products()
         this.$emit('updateTimeIndex', this.current);
+        console.log(this.$store.state.products)
       })
     }
   },

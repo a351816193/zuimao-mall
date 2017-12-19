@@ -33,9 +33,7 @@
     },
     props: [
       'products'
-    ],
-    created () {
-    }
+    ]
   }
 </script>
 <style lang="scss">

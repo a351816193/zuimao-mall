@@ -3,7 +3,7 @@
     <v-focus></v-focus>
     <v-adv></v-adv>
     <hot-time-nav @updateTimeIndex="get_hot_products"></hot-time-nav>
-    <v-products :products='hot_products'></v-products>
+    <v-products :products='this.$store.state.products'></v-products>
   </div>
 </template>
 <script type="text/javascript">
@@ -12,13 +12,10 @@ import adv from '../adv/adv.vue'
 import hot_time_nav from './hot_time_nav.vue'
 import c_products from '../products/products.vue'
 import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
 export default {
   data () {
     return {
-      hot_products: []
+      hot_products: this.$store.state.products
     }
   },
   components: {
@@ -29,9 +26,11 @@ export default {
   },
   methods: {
     get_hot_products: function() {
-      let productsAPI = '../../../static/products.json';
-      axios.get(productsAPI).then(res => {
-        this.hot_products = res.data.products[this.$store.state.activeIndex];
+      this.$nextTick(function() {
+        this.$store.commit({
+          type: 'get_products',
+          productsAPI: '../../static/products.json'
+        })
       })
     }
   },
@@ -39,10 +38,11 @@ export default {
 
   },
   created() {
-    let productsAPI = '../../../static/products.json';
-    axios.get(productsAPI).then(res => {
-      console.log(this.$store.state.activeIndex)
-      this.hot_products = res.data.products[this.$store.state.activeIndex];
+    this.$nextTick(function() {
+      this.$store.commit({
+        type: 'get_products',
+        productsAPI: '../../static/products.json'
+      })
     })
   }
 }
