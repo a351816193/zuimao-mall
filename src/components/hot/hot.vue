@@ -15,7 +15,6 @@ import Vue from 'vue'
 export default {
   data () {
     return {
-      hot_products: this.$store.state.products
     }
   },
   components: {
@@ -28,22 +27,11 @@ export default {
     get_hot_products: function() {
       this.$nextTick(function() {
         this.$store.commit({
-          type: 'get_products',
+          type: 'updateProducts',
           productsAPI: '../../static/products.json'
         })
       })
     }
-  },
-  computed: {
-
-  },
-  created() {
-    this.$nextTick(function() {
-      this.$store.commit({
-        type: 'get_products',
-        productsAPI: '../../static/products.json'
-      })
-    })
   }
 }
 </script>

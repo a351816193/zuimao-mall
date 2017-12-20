@@ -15,14 +15,21 @@ const store = new Vuex.Store({
     updateTimeIndex(state, payload) {
       state.activeIndex = payload.activeIndex;
     },
-    get_products(state, payload) {
-      axios.get(state.productsAPI).then(res => {
-        console.log('nohahah')
+    updateProducts(state, payload) {
+      axios.get(payload.productsAPI).then(res => {
         state.products = res.data.products[state.activeIndex];
+      })
+    },
+    loadMoreProducts(state, payload) {
+      axios.get(payload.productsAPI).then(res => {
+        state.products = state.products.concat(res.data.products[state.activeIndex]);
+        console.log('products.length', state.products.length)
       })
     }
   },
   getters: {
+  },
+  actions: {
   },
   modules: {
     nowTimeIndex: nowTimeIndex

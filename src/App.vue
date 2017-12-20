@@ -11,7 +11,7 @@
 import header from './components/header/header.vue'
 import menu_nav from './components/menu_nav/menu_nav.vue'
 import hot from './components/hot/hot.vue'
-import flexible from '../node_modules/lib-flexible/flexible.js'
+// import flexible from '../node_modules/lib-flexible/flexible.js'
 export default {
   name: 'app',
   components: {

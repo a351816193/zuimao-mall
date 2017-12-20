@@ -1,6 +1,6 @@
 <template>
   <div>
-        <swiper ref="hot-time-nav" id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
+    <swiper ref="hot-time-nav" id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
       <swiper-slide class="nav-item">
         <router-link  to="?time=0">
           <i class="time">昨日</i><br><span class="statu">别错过</span>
@@ -75,7 +75,6 @@
       </swiper-slide>
     </swiper>
   </div>
-
 </template>
 <script type="text/javascript">
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
@@ -115,7 +114,7 @@ export default {
   watch: {
     current: function() {
       this.$nextTick(function() {
-        console.log(this.current)
+        // console.log(this.current)
       })
     }
   }
@@ -139,12 +138,9 @@ export default {
     }
     .nav-item
     {
-      height: 1.6rem;
       @include ver_center;
-
       a
       {
-        font-size: 20px;
         height: 1.16rem;
         padding: .2rem 0;
         text-align: center;

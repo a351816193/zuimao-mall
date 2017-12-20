@@ -26,14 +26,36 @@
     </div>
 </template>
 <script type="text/javascript">
+  import Vue from 'vue'
+  import axios from 'axios'
+  import VueAxios from 'vue-axios'
+  import scrollLoad from '../../assets/js/scrollLoad.js'
+  Vue.use(VueAxios, axios)
   export default {
     data () {
       return {
+        scrollTop: 0
       }
     },
     props: [
       'products'
-    ]
+    ],
+    mounted() {
+      let self = this;
+      let sw = true;
+      window.addEventListener('touchend', function() {
+        console.log('ScrollTop', scrollLoad.getScrollTop());
+        self.scrollTop = scrollLoad.getScrollTop();
+        console.log('offsetHeight', scrollLoad.getVisibleHeight());
+        console.log('ScrollHeight', scrollLoad.getScrollHeight());
+        if (scrollLoad.getScrollTop() + scrollLoad.getVisibleHeight() >= scrollLoad.getScrollHeight() - 100) {
+          self.$store.commit({
+            type: 'loadMoreProducts',
+            productsAPI: '../../static/products.json'
+          })
+        }
+      })
+    }
   }
 </script>
 <style lang="scss">
@@ -41,7 +63,6 @@
 .product-list {
     .product {
         width: 100%;
-        margin-top: 10px;
         padding-bottom: 10px;
 
         background-color: #fff;
