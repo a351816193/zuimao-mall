@@ -78,7 +78,7 @@
             height: 100%;
         }
         .caption {
-            font-size: 16px;
+            @include font-dpr(16px);
             font-weight: bold;
             line-height: 1.5em;
 

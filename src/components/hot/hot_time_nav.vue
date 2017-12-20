@@ -1,80 +1,57 @@
 <template>
-  <div>
     <swiper ref="hot-time-nav" id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
       <swiper-slide class="nav-item">
-        <router-link  to="?time=0">
-          <i class="time">昨日</i><br><span class="statu">别错过</span>
-        </router-link>
+          <i class="time">昨日</i>
+          <span class="statu">别错过</span>
       </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link  to="?time=1">
-          <i class="time">20:00</i><br><span class="statu">昨日精选</span>
-        </router-link>
-      </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=2">
-          <i class="time">21:00</i><br><span class="statu">昨日精选</span>
-        </router-link>
-      </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=3">
-          <i class="time">09:00</i><br><span class="statu">抢购中</span>
-        </router-link>
-      </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=4">
-          <i class="time">10:00</i><br><span class="statu">抢购中</span>
-        </router-link>
-      </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=5">
-          <i class="time">11:00</i>
-          <br><span class="statu">抢购中</span>
-        </router-link>
-        </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=6">
-          <i class="time">12:00</i>
-          <br><span class="statu">抢购中</span>
-        </router-link>
-        </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=7">
-          <i class="time">14:00</i>
-          <br><span class="statu">抢购中</span>
-        </router-link>
-        </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=8">
-          <i class="time">16:00</i>
-          <br><span class="statu">抢购中</span>
-        </router-link>
-        </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=9">
-          <i class="time">19:00</i>
-          <br><span class="statu">抢购中</span>
-        </router-link>
-        </swiper-slide>
-      <swiper-slide class="nav-item">
-        <router-link  to="?time=10">
           <i class="time">20:00</i>
-          <br><span class="statu">抢购中</span>
-        </router-link>
-        </swiper-slide>
+          <span class="statu">昨日精选</span>
+      </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link  to="?time=11">
           <i class="time">21:00</i>
-          <br><span class="statu">抢购中</span>
-        </router-link>
+          <span class="statu">昨日精选</span>
+      </swiper-slide>
+      <swiper-slide class="nav-item">
+          <i class="time">09:00</i>
+          <span class="statu">抢购中</span>
+      </swiper-slide>
+      <swiper-slide class="nav-item">
+          <i class="time">10:00</i>
+          <span class="statu">抢购中</span>
+      </swiper-slide>
+      <swiper-slide class="nav-item">
+          <i class="time">11:00</i>
+          <span class="statu">抢购中</span>
         </swiper-slide>
       <swiper-slide class="nav-item">
-        <router-link  to="?time=12">
+          <i class="time">12:00</i>
+          <span class="statu">抢购中</span>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+          <i class="time">14:00</i>
+          <span class="statu">抢购中</span>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+          <i class="time">16:00</i>
+          <span class="statu">抢购中</span>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+          <i class="time">19:00</i>
+          <span class="statu">抢购中</span>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+          <i class="time">20:00</i>
+          <span class="statu">抢购中</span>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
+          <i class="time">21:00</i>
+          <span class="statu">抢购中</span>
+        </swiper-slide>
+      <swiper-slide class="nav-item">
           <img class="tomorrow" src="./../../assets/images/tomorrow.png">
-        </router-link>
       </swiper-slide>
     </swiper>
-  </div>
 </template>
 <script type="text/javascript">
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
@@ -130,34 +107,28 @@ export default {
     background-color: #fff;
     .swiper-slide-active
     {
-        a
-        {
-            color: $primarycolor;
-            border-bottom: 2px solid $primarycolor;
-        }
+      color: $primarycolor;
+      border-bottom: 3px solid $primarycolor;
     }
     .nav-item
     {
-      @include ver_center;
-      a
-      {
+        @include ver_center;
         height: 1.16rem;
-        padding: .2rem 0;
         text-align: center;
         color: #4d4d4d;
-      }
+        flex-direction: column;
       .tomorrow
       {
         width: 1.76rem;
       }
       .time
       {
-        font-size: 18px;
+        @include font-dpr(12px);
         font-weight: bold;
       }
       .statu
       {
-        font-size: 10px;
+        @include font-dpr(10px);
       }
     }
 }
