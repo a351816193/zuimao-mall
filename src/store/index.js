@@ -9,7 +9,9 @@ const store = new Vuex.Store({
   state: {
     activeIndex: nowTimeIndex.nowTimeIndex(),
     productsAPI: '../../static/products.json',
-    products: []
+    products: [],
+    focuses: [],
+    onsale: Object.create(null)
   },
   mutations: {
     updateTimeIndex(state, payload) {
@@ -23,11 +25,22 @@ const store = new Vuex.Store({
     loadMoreProducts(state, payload) {
       axios.get(payload.productsAPI).then(res => {
         state.products = state.products.concat(res.data.products[state.activeIndex]);
-        console.log('products.length', state.products.length)
+      })
+    },
+    updateFocus(state, payload) {
+      axios.get(payload.focusAPI).then(res => {
+        state.focuses = res.data.focuses;
+      })
+    },
+    updateOnsale(state, payload) {
+      axios.get(payload.onsaleAPI).then(res => {
+        state.onsale = res.data.onsale[state.activeIndex];
       })
     }
   },
   getters: {
+    getProducts: state => state.products,
+    getFocuses: state => state.focuses
   },
   actions: {
   },

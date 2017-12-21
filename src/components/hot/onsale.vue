@@ -1,24 +1,40 @@
 <template>
-    <div class="onsale">
-      <a class="onsale-main" href="">
-          <span class="arrow"></span>
-          <img src="../../assets/images/1.png"/>
-      </a>
-      <swiper id="onsale-list" class="swiper-container onsale-list">
-        <swiper-slide>
-          <a href="">
-
-          </a>
-        </swiper-slide>
-      </swiper>
-    </div>
+  <div class="onsale">
+    <a class="onsale-main" :href="onsale.onsale_main.url">
+        <span class="arrow"></span>
+        <img :src="onsale.onsale_main.img_src"/>
+    </a>
+    <swiper id="onsale-list" class="swiper-container onsale-list" :options="swiperOption">
+      <swiper-slide v-for="pro in onsale.onsale_pro">
+        <a :href="pro.url" class="onsale-pro">
+          <img :src="pro.img_src" alt="">
+          <div class="onsale-price">
+              <span class="ori-price icon-yen">{{ pro.price }}</span>
+              /
+              <span class="earn icon-zhuan">{{ pro.own }}</span>
+          </div>
+        </a>
+      </swiper-slide>
+    </swiper>
+  </div>
 </template>
 <script type="text/javascript">
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
   export default {
-    data() {
-
+    data () {
+      return {
+        swiperOption: {
+          slidesPerView: '3',
+          direction: 'horizontal',
+          resistance: false,
+          slidesPerGroup: 3,
+          spaceBetween: 5
+        }
+      }
     },
+    props: [
+      'onsale'
+    ],
     components: {
       'swiper': swiper,
       'swiper-slide': swiperSlide
@@ -26,13 +42,44 @@
   }
 </script>
 <style lang="scss">
+@import './../../common/sass/global.scss';
 .onsale {
-    margin-top: 10px;
-
     background-color: #fff;
     .onsale-list {
+      .onsale-pro {
+          font-size: 0;
+
+          display: inline-block;
+
+          vertical-align: bottom;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+          .onsale-price {
+              @include font-dpr(14px);
+
+              padding: .133333rem 0;
+
+              text-align: center;
+
+              color: #999;
+              .icon-yen:before,
+              .icon-zhuan:before {
+                  @include font-dpr(12px);
+                  margin-right: 5px;
+                  margin-left: 5px;
+              }
+              .ori-price {
+                  color: #4d4d4d;
+              }
+              .earn {
+                  color: $primarycolor;
+              }
+          }
+      }
     }
-        .onsale-main {
+    .onsale-main {
         font-size: 0;
 
         position: relative;

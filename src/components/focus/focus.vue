@@ -1,12 +1,12 @@
 <template>
-      <swiper class="focus" id="focus" :options="swiperOption">
-          <swiper-slide><img class="lazy" src="./../../assets/images/1.png" alt=""></swiper-slide>
-          <swiper-slide><img class="lazy" src="./../../assets/images/1.png" alt=""></swiper-slide>
-          <swiper-slide><img class="lazy" src="./../../assets/images/1.png" alt=""></swiper-slide>
-          <swiper-slide><img class="lazy" src="./../../assets/images/1.png" alt=""></swiper-slide>
-          <swiper-slide><img class="lazy" src="./../../assets/images/1.png" alt=""></swiper-slide>
-          <div class="swiper-pagination" slot="pagination"></div>
-      </swiper>
+  <swiper class="focus" id="focus" :options="swiperOption">
+      <swiper-slide v-for="focus in focuses">
+        <a :href="focus.url">
+          <img :src="focus.img_src" alt="">
+        </a>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+  </swiper>
 </template>
 <script type="text/javascript">
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
@@ -16,12 +16,13 @@ export default {
     return {
       swiperOption: {
         autoplay: 0,
-        slidesPerView: 'auto',
-        direction: 'horizontal',
         pagination: '.swiper-pagination'
       }
     }
   },
+  props: [
+    'focuses'
+  ],
   components: {
     'swiper': swiper,
     'swiper-slide': swiperSlide

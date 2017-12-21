@@ -19,7 +19,7 @@
     width: 100%;
     .menu-item
     {
-        font-size: 14px;
+        @include font-dpr(12px);
         width: 20%;
         text-align: center;
         a
@@ -37,7 +37,7 @@
         &.active a
         {
             color: $primarycolor;
-            border-bottom: 2px solid $primarycolor;
+            border-bottom: 3px solid $primarycolor;
         }
     }
 

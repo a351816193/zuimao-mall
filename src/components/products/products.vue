@@ -1,26 +1,28 @@
 <template>
     <div class="product-list">
       <div v-for="pro in products" class="product ">
-          <a :href="pro.pro_url" class="product-info">
-              <img class="product-img" :src="pro.img_src">
-              <div class="caption">
-                  <i class="icon-hot">{{ pro.tag }}</i>
+          <a :href="pro.pro_url" class="product-img">
+              <img :src="pro.img_src">
+          </a>
+          <div class="caption">
+              <div class="pro-title">
+                  <i :class="'icon-'+pro.tag"></i>
                   <b>{{ pro.pro_title }}</b>
               </div>
-              <p class="price">
-                  <span class="ori-price icon-yen">{{ pro.price }}</span>
-                  /<span class="earn icon-zhuan">{{ pro.own }}</span>
-              </p>
-          </a>
-          <div class="pcs-action">
-              <div class="pcs">
+              <div class="price">
+                  <span class="ori-price icon-yen">{{ pro.price }}</span>/<span class="earn icon-zhuan">{{ pro.own }}</span>
+              </div>
+              <div class="more">
+                <span class="pcs">
                   库存{{ pro.stock }}
+                </span>
+                <div class="more-actions">
+                    <i class="icon-put"></i>
+                    <i class="icon-image"></i>
+                    <i class="icon-report"></i>
+                </div>
               </div>
-              <div class="more-actions">
-                  <i class="icon-put"></i>
-                  <i class="icon-image"></i>
-                  <i class="icon-report"></i>
-              </div>
+
           </div>
       </div>
     </div>
@@ -61,78 +63,73 @@
 <style lang="scss">
 @import './../../common/sass/global.scss';
 .product-list {
-    .product {
+  background: #f4f4f4;
+  .product {
+    width: 100%;
+    margin-bottom: 0.266667rem;
+    background-color: #fff;
+    .product-img {
+        width: 10rem;
+        height: 4.533333rem;
+      &>img{
         width: 100%;
-        padding-bottom: 10px;
-
-        background-color: #fff;
-        .product-info {
-            display: inline-block;
-            width: 10rem;
-            height: 4.533333rem;
+        height: 100%;
+      }
+    }
+    .caption {
+      @include font-dpr(16px);
+      font-weight: bold;
+      line-height: 1.5em;
+      padding: 0.133333rem;
+      color: #333;
+      .pro-title{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display:         flex;
+        align-items: center;
+        .icon-hot:before {
+          color: $primarycolor;
+          margin-right:5px;
         }
-        .product-img {
-            // display: inline-block;
-
-            width: 100%;
-            height: 100%;
+      }
+      .price {
+        @include font-dpr(16px);
+        color: #999;
+        .icon-yen:before,
+        .icon-zhuan:before {
+            @include font-dpr(13px);
+            margin-right: 5px;
+            margin-left: 5px;
         }
-        .caption {
-            @include font-dpr(16px);
-            font-weight: bold;
-            line-height: 1.5em;
-
-            padding: 0 5px;
-
-            color: #333;
-            .icon-hot:before {
-                color: $primarycolor;
-
-                align-items: center;
-            }
+        .ori-price {
+            color: #4d4d4d;
         }
-        .price {
-            font-size: 16px;
-
-            color: #999;
-            .icon-yen:before,
-            .icon-zhuan:before {
-                font-size: 13px;
-
-                margin-right: 5px;
-                margin-left: 5px;
-            }
-            .ori-price {
-                color: #4d4d4d;
-            }
-            .earn {
-                color: $primarycolor;
-            }
+        .earn {
+            color: $primarycolor;
         }
-        .pcs-action {
+      }
+      .more {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .pcs {
+          @include font-dpr(12px);
+          color: #ccc;
+        }
+        .more-actions {
+            @include font-dpr(20px);
+
             display: flex;
 
-            padding: 5px 10px;
+            width: 30%;
+
+            color: #333;
 
             justify-content: space-between;
-            align-items: center;
-            .pcs {
-                font-size: 12px;
-
-                color: #ccc;
-            }
-            .more-actions {
-                font-size: 20px;
-
-                display: flex;
-
-                width: 30%;
-
-                color: #333;
-
-                justify-content: space-between;
-            }
         }
+      }
     }
+  }
 }
 </style>

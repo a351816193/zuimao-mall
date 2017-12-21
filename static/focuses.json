@@ -1,0 +1,24 @@
+{
+  "focuses": [
+    {
+      "url": "localhost/detail.html?proID=1",
+      "img_src": "static/images/focus/1.png"
+    },
+    {
+      "url": "localhost/detail.html?proID=1",
+      "img_src": "static/images/focus/1.png"
+    },
+    {
+      "url": "localhost/detail.html?proID=1",
+      "img_src": "static/images/focus/1.png"
+    },
+    {
+      "url": "localhost/detail.html?proID=1",
+      "img_src": "static/images/focus/1.png"
+    },
+    {
+      "url": "localhost/detail.html?proID=1",
+      "img_src": "static/images/focus/1.png"
+    }
+  ]
+}

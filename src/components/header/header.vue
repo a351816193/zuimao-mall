@@ -48,7 +48,7 @@ export default {
         .icon
         {
             width: 0.666667rem;
-            font-size: 18px;
+            @include font-dpr(18px);
             color: #fff;
             line-height: 1.066667rem;
             padding: 0 .133333rem;
@@ -69,7 +69,7 @@ export default {
         .centermenu
         {
             display: block;
-            font-size: 18px;
+            @include font-dpr(18px);
 
             text-align: center;
             flex: 1;
