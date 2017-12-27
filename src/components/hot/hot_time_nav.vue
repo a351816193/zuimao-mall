@@ -1,4 +1,5 @@
 <template>
+  <div class="fixed-wrap">
     <swiper ref="hot-time-nav" id="hot-time-nav" class="swiper-wrapper hot-time-nav" :options="swiperOption">
       <swiper-slide class="nav-item">
           <i class="time">昨日</i>
@@ -52,9 +53,12 @@
           <img class="tomorrow" src="./../../assets/images/tomorrow.png">
       </swiper-slide>
     </swiper>
+  </div>
 </template>
 <script type="text/javascript">
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import topNavfixed from '../../assets/js/navfixed.js'
+import scrollLoad from '../../assets/js/scrollLoad.js'
 export default {
   data () {
     return {
@@ -84,9 +88,16 @@ export default {
         this.current = this.$refs['hot-time-nav'].swiper.activeIndex;
         // 触发事件updateTimeIndex, 调用hot组件中的get_hot_products()
         this.$emit('updateTimeIndex', this.current);
-        console.log(this.$store.state.products)
+        // console.log(this.$store.state.products)
       })
     }
+  },
+  mounted () {
+    this.$nextTick(function () {
+      // let hotTimeNav = document.querySelector('.hot-time-nav');
+      let fixedwrap = document.querySelector('.fixed-wrap');
+      topNavfixed.topNavfixed(fixedwrap);
+    })
   },
   watch: {
     current: function() {
@@ -100,11 +111,16 @@ export default {
 <style lang="scss">
 @import './../../common/sass/global.scss';
 @import './../../common/swiper-3.4.2.min.css';
+.fixed-wrap{
+  height: calc(1.16rem + 3px);
+  width: 100%;
+    z-index: 999;
+}
 .hot-time-nav
 {
-    z-index: 999;
     overflow: hidden;
     background-color: #fff;
+    height: calc(1.16rem + 3px);
     .swiper-slide-active
     {
       color: $primarycolor;

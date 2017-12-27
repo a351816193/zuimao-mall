@@ -5,19 +5,21 @@
       <v-menu-nav class="nav-menu" id="menu"></v-menu-nav>
       <router-view></router-view>
     </div>
+    <v-footer></v-footer>
   </div>
 </template>
 <script>
 import header from './components/header/header.vue'
 import menu_nav from './components/menu_nav/menu_nav.vue'
 import hot from './components/hot/hot.vue'
-// import flexible from '../node_modules/lib-flexible/flexible.js'
+import footer from './components/footer/footer.vue'
 export default {
   name: 'app',
   components: {
     'v-header': header,
     'v-menu-nav': menu_nav,
-    'v-hot': hot
+    'v-hot': hot,
+    'v-footer': footer
   }
 }
 </script>
@@ -29,6 +31,7 @@ export default {
 html {
     font-size: 75px;
     min-width: 320px;
+    position:relative;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

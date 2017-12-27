@@ -53,8 +53,8 @@
 
           vertical-align: bottom;
           img {
-            width: 100%;
-            height: 100%;
+            width: 3.333333rem;
+            height: 3.333333rem;
           }
           .onsale-price {
               @include font-dpr(14px);
