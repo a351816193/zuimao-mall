@@ -58,7 +58,6 @@
 <script type="text/javascript">
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import topNavfixed from '../../assets/js/navfixed.js'
-import scrollLoad from '../../assets/js/scrollLoad.js'
 export default {
   data () {
     return {
@@ -70,8 +69,7 @@ export default {
         initialSlide: this.$store.state.activeIndex,
         direction: 'horizontal',
         onSlideChangeEnd: this.getTimeIndex
-      },
-      current: this.$store.state.activeIndex
+      }
     }
   },
   components: {
@@ -94,17 +92,11 @@ export default {
   },
   mounted () {
     this.$nextTick(function () {
-      // let hotTimeNav = document.querySelector('.hot-time-nav');
-      let fixedwrap = document.querySelector('.fixed-wrap');
-      topNavfixed.topNavfixed(fixedwrap);
+      let hotTimeNav = this.$refs['hot-time-nav'].$el;
+      topNavfixed.topNavfixed(hotTimeNav);
     })
   },
   watch: {
-    current: function() {
-      this.$nextTick(function() {
-        // console.log(this.current)
-      })
-    }
   }
 }
 </script>
@@ -114,10 +106,10 @@ export default {
 .fixed-wrap{
   height: calc(1.16rem + 3px);
   width: 100%;
-    z-index: 999;
 }
 .hot-time-nav
 {
+    z-index: 999;
     overflow: hidden;
     background-color: #fff;
     height: calc(1.16rem + 3px);

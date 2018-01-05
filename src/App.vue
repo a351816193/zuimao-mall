@@ -31,7 +31,6 @@ export default {
 html {
     font-size: 75px;
     min-width: 320px;
-    position:relative;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
