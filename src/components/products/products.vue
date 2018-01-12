@@ -1,9 +1,9 @@
 <template>
     <div class="product-list">
       <div v-for="pro in products" class="product ">
-          <a :href="pro.pro_url" class="product-img">
+          <router-link :to="'/detail?pro_id='+pro.pro_url" class="product-img">
               <img :src="pro.img_src">
-          </a>
+          </router-link>
           <div class="caption">
               <div class="pro-title">
                   <i :class="'icon-'+pro.tag"></i>

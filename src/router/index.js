@@ -4,6 +4,7 @@ import hot from './../components/hot/hot'
 import invite from './../components/invite/invite'
 import search_menu from './../components/search_menu/search_menu'
 import no_hot from './../components/no_not/not_hot'
+import detail from './../components/detail/detail'
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +24,10 @@ export default new Router({
     {
       path: '/search_menu',
       component: search_menu
+    },
+    {
+      path: '/detail?pro_id=id',
+      component: detail
     },
     {
       path: '/hot',
