@@ -1,6 +1,16 @@
-# zuimao
+# zuimao-mall
+- 醉猫商城-公司的一个项目,被我改成VUE版本
+##前端架构
+- 页面架构 html5, sass, javascript
+- 框架 vue(脚手架vue-cli)
+- 数据请求 vue-axios
+- 路由 vue-router
+- vue-lazyload 实现图片懒加载
 
-> A Vue.js project
+#目前项目实现功能
+- 首页数据展示
+- 详情页
+- 支持下拉加载更多
 
 ## Build Setup
 
@@ -18,4 +28,3 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
