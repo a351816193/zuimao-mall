@@ -2,13 +2,13 @@
   <div class="wrapper">
         <div class="detail-wrap">
             <div class="detail-header">
-                <h1>澳洲名酒 BIN 407 03 S</h1>
+                <h1>{{detail.pro_name}}</h1>
             </div>
             <div class="detail-page">
                 <div class="box box-image">
                     <h2 class="detail-title">商品图片</h2>
                     <div class="box-content">
-                        <img src="http://gg.vimenchina.cn/Public/Uploads/201710/59f301c4624b6.jpg" class="image">
+                        <img :src="detail.main[0]" class="image">
                     </div>
                 </div>
                 <section class="box">
@@ -17,10 +17,10 @@
                         <div class="plug clearfix">
                             <div class="price">
                                 <span class="symbol">￥</span>
-                                <span class="current-price">1288</span>
+                                <span class="current-price">{{detail.price}}</span>
                                 <span class="group">
                                   <span class="original-price" style="height:10px;">&nbsp;</span>
-                                  <span class="salenum">251 件已售</span>
+                                  <span class="salenum">{{detail.stock}} 件已售</span>
                                 </span>
                             </div>
                             <div class="timer">
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="content-title">
-                            <h1>澳洲名酒 BIN 407 03 S</h1>
+                            <h1>{{detail.pro_name}}</h1>
                             <p></p>
                         </div>
                         <div class="baoyou">
@@ -43,7 +43,7 @@
                 <section class="box">
                     <h2 class="detail-title">商品描述</h2>
                     <div class="box-content detail-content">
-                        <figure v-for=""><img class="lazy" data-original="http://www.vimenchina.com/Public/Uploads/201710/15090979447654.jpg" _src="http://www.vimenchina.com/Public/Uploads/201710/15090979447654.jpg"></figure>
+                        <figure v-for="descript in detail.descript"><img class="lazy" v-lazy="descript"></figure>
                     </div>
                 </section>
                 <section class="box">
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="side order full-row">
+<!--                         <div class="side order full-row">
                             <div class="order-title border ellipsis"><i class="icon-shipping"></i>最新订购</div>
                             <div class="order-delivery">
                                 <div class="order-scroll" id="order-scroll">
@@ -352,13 +352,13 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </section>
             </div>
         </div>
         <!--选择地区弹层-->
-        <section id="areaLayer" class="express-area-box">
+<!--         <section id="areaLayer" class="express-area-box">
             <header>
                 <h3>选择地区</h3>
                 <a id="backUp" class="back icon-back" href="javascript:void(0)" title="返回"></a>
@@ -367,9 +367,9 @@
             <article id="areaBox">
                 <ul id="areaList" class="area-list"></ul>
             </article>
-        </section>
+        </section> -->
         <!--遮罩层-->
-        <div id="areaMask" class="mask"></div>
+        <!-- <div id="areaMask" class="mask"></div> -->
         <div class="remark">浙ICP备16016059号
         </div>
         <div class="footer">Copyright © 2016 <a href="http://www.alizi.net" target="_blank">www.alizi.net</a> All Rights Reserved</div>
@@ -381,7 +381,8 @@
         </div>
     </div>
 </template>
-<style type="scss">
+<style lang="scss">
+@import './../../common/sass/global.scss';
   .wrapper
 {
     height: 100%;
@@ -393,7 +394,14 @@
     background-position: center;
     background-size: cover;
 }
+.lazy
+{
+    margin: auto;
 
+    text-align: center;
+
+    background: #fff;
+}
 .detail-wrap
 {
     background-color: rgba(225, 225, 225, .5);
@@ -1155,5 +1163,33 @@
 }
 </style>
 <script type="text/javascript">
-
+  import Vue from 'vue'
+  import axios from 'axios'
+  import VueAxios from 'vue-axios'
+  import VueLazyload from 'vue-lazyload'
+  Vue.use(VueAxios, axios)
+  Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    loading: '../static/images/loading.gif',
+    attempt: 1,
+    listenEvents: [ 'scroll' ]
+  })
+  export default {
+    data () {
+      return {
+        detail: {}
+      }
+    },
+    created () {
+      let detailAPI = '../../../static/detail.json';
+      let pro_id = this.$route.params.pro_id;
+      axios.get(detailAPI, {
+        params: {
+          ID: pro_id
+        }
+      }).then(res => {
+        this.detail = res.data[pro_id];
+      });
+    }
+  }
 </script>

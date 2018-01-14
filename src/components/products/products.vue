@@ -1,7 +1,7 @@
 <template>
     <div class="product-list">
       <div v-for="pro in products" class="product ">
-          <router-link :to="'/detail?pro_id='+pro.pro_url" class="product-img">
+          <router-link :to="'/detail/'+pro.pro_id" class="product-img">
               <img :src="pro.img_src">
           </router-link>
           <div class="caption">

@@ -26,7 +26,7 @@ export default new Router({
       component: search_menu
     },
     {
-      path: '/detail?pro_id=id',
+      path: '/detail/:pro_id',
       component: detail
     },
     {
