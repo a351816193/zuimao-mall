@@ -11,7 +11,10 @@ const store = new Vuex.Store({
     productsAPI: '../../static/products.json',
     products: [],
     focuses: [],
-    onsale: Object.create(null)
+    onsale: Object.create(null),
+    title: '醉猫商城',
+    isShowNav: true,
+    isShowFooter: true
   },
   mutations: {
     updateTimeIndex(state, payload) {
@@ -21,6 +24,9 @@ const store = new Vuex.Store({
       axios.get(payload.productsAPI).then(res => {
         state.products = res.data.products[state.activeIndex];
       })
+    },
+    updateTitle(state, payload) {
+      state.title = payload.title;
     },
     loadMoreProducts(state, payload) {
       axios.get(payload.productsAPI).then(res => {
@@ -36,6 +42,18 @@ const store = new Vuex.Store({
       axios.get(payload.onsaleAPI).then(res => {
         state.onsale = res.data.onsale[state.activeIndex];
       })
+    },
+    showNav(state) {
+      state.isShowNav = true;
+    },
+    hideNav(state) {
+      state.isShowNav = false;
+    },
+    showFooter(state) {
+      state.isShowFooter = true;
+    },
+    hideFooter(state) {
+      state.isShowFooter = false;
     }
   },
   getters: {
@@ -43,6 +61,18 @@ const store = new Vuex.Store({
     getFocuses: state => state.focuses
   },
   actions: {
+    showNav({commit}) {
+      commit('showNav');
+    },
+    hideNav({commit}) {
+      commit('hideNav');
+    },
+    showFooter({commit}) {
+      commit('showFooter');
+    },
+    hideFooter({commit}) {
+      commit('hideFooter');
+    }
   },
   modules: {
     nowTimeIndex: nowTimeIndex

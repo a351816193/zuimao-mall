@@ -57,6 +57,10 @@ export default {
       this.$store.commit({
         type: 'updateOnsale',
         onsaleAPI: '../../static/onsale.json'
+      });
+      this.$store.commit({
+        type: 'updateTitle',
+        title: '醉猫商城'
       })
     })
   }

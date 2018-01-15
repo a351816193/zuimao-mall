@@ -1189,6 +1189,10 @@
         }
       }).then(res => {
         this.detail = res.data[pro_id];
+        this.$store.commit({
+          type: 'updateTitle',
+          title: this.detail.pro_name
+        })
       });
     }
   }

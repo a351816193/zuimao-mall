@@ -4,7 +4,7 @@
             <router-link to="/invite" class="nav-wrap-left icon icon-user">
             </router-link>
             <div class="centermenu">
-                <i>醉猫商城</i>
+                <i>{{ this.$store.state.title }}</i>
             </div>
             <router-link to="/searchMenu" class="nav-wrap-right icon icon-search">
             </router-link>
