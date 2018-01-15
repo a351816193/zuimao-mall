@@ -1,13 +1,13 @@
 <template>
       <div class="footer-nav">
-        <router-link to="hot"><span class="iconfont icon-paiming"></span><p class="text-tit">排行榜</p></router-link>
-        <router-link to="hot"><span class="iconfont icon-liaotian"></span><p class="text-tit">圈子</p></router-link>
-        <router-link to="hot"><span class="iconfont icon-follow"></span><p class="text-tit">关注</p></router-link>
-        <router-link  to="hot"class="current"><span class="iconfont icon-hongjiu"></span><p class="text-tit">红酒商城</p>
+        <router-link to="home"><span class="iconfont icon-paiming"></span><p class="text-tit">排行榜</p></router-link>
+        <router-link to="home"><span class="iconfont icon-liaotian"></span><p class="text-tit">圈子</p></router-link>
+        <router-link to="home"><span class="iconfont icon-follow"></span><p class="text-tit">关注</p></router-link>
+        <router-link  to="home"class="current"><span class="iconfont icon-hongjiu"></span><p class="text-tit">红酒商城</p>
         </router-link>
-        <router-link to="hot"><span class="iconfont icon-all-line"></span><p class="text-tit">活动</p></router-link>
-        <router-link to="hot"><span class="iconfont icon-vip"></span><p class="text-tit">VIP</p></router-link>
-        <router-link to="hot"><span class="iconfont icon-huiyuan-copy"></span><p class="text-tit">我的</p></router-link>
+        <router-link to="home"><span class="iconfont icon-all-line"></span><p class="text-tit">活动</p></router-link>
+        <router-link to="home"><span class="iconfont icon-vip"></span><p class="text-tit">VIP</p></router-link>
+        <router-link to="home"><span class="iconfont icon-huiyuan-copy"></span><p class="text-tit">我的</p></router-link>
     </div>
 </template>
 

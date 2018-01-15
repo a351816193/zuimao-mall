@@ -5,13 +5,22 @@ import invite from './../components/invite/invite'
 import search_menu from './../components/search_menu/search_menu'
 import no_hot from './../components/no_not/not_hot'
 import detail from './../components/detail/detail'
+import home from './../components/home/home'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/hot'
+      redirect: '/home/hot'
+    },
+    {
+      path: '/home',
+      redirect: '/home/hot'
+    },
+    {
+      path: '/home',
+      component: home
     },
     {
       path: '/invite',
@@ -30,7 +39,7 @@ export default new Router({
       component: detail
     },
     {
-      path: '/hot',
+      path: '/home/hot',
       name: 'hot',
       component: hot
     }

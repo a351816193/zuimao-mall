@@ -2,35 +2,27 @@
   <div id="app">
     <v-header></v-header>
     <div class="content">
-      <v-menu-nav v-show="isShowNav" class="nav-menu" id="menu"></v-menu-nav>
+      <v-footer v-show="isShowFooter"></v-footer>
       <router-view></router-view>
     </div>
-    <v-footer v-show="isShowFooter"></v-footer>
   </div>
 </template>
 <script>
 import header from './components/header/header.vue'
-import menu_nav from './components/menu_nav/menu_nav.vue'
-import hot from './components/hot/hot.vue'
 import footer from './components/footer/footer.vue'
 import {mapState} from 'vuex'
 export default {
   name: 'app',
   components: {
     'v-header': header,
-    'v-menu-nav': menu_nav,
-    'v-hot': hot,
     'v-footer': footer
   },
-  computed: mapState(['isShowNav', 'isShowFooter']),
+  computed: mapState(['isShowFooter']),
   watch: {
     $route(to, from) {
-      console.log(to.path, from.path);
-      if (to.path.indexOf('hot') !== -1) {
-        this.$store.dispatch('showNav');
+      if (to.path.indexOf('home') !== -1) {
         this.$store.dispatch('showFooter');
       } else {
-        this.$store.dispatch('hideNav');
         this.$store.dispatch('hideFooter');
       }
     }

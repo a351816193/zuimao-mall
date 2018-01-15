@@ -1,14 +1,12 @@
 <template>
-  <div>
     <swiper :options="swiperOption">
-      <swiper-slide class="menu-item active"><router-link to="/hot">进口红酒</router-link></swiper-slide>
-      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
-      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
-      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
-      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
-      <swiper-slide class="menu-item"><router-link to="/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item active"><router-link to="/home/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/home/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/home/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/home/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/home/hot">进口红酒</router-link></swiper-slide>
+      <swiper-slide class="menu-item"><router-link to="/home/hot">进口红酒</router-link></swiper-slide>
     </swiper>
-  </div>
 </template>
 <style lang="scss">
 @import './../../common/sass/global.scss';

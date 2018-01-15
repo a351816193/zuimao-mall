@@ -370,9 +370,8 @@
         </section> -->
         <!--遮罩层-->
         <!-- <div id="areaMask" class="mask"></div> -->
-        <div class="remark">浙ICP备16016059号
-        </div>
-        <div class="footer">Copyright © 2016 <a href="http://www.alizi.net" target="_blank">www.alizi.net</a> All Rights Reserved</div>
+        <div class="remark">浙ICP备16016059号</div>
+        <div class="footer">Copyright © 2016 <a href="http://www.z-mao.com" target="_blank">http://www.z-mao.com</a> All Rights Reserved</div>
         <div class="foot-nav"><a class="up" href="#">TOP</a>
             <ul>
                 <li class="foot-nav-1" style="width:49%"><a href="#orderForm"><strong class="icon edit">立即下单</strong></a></li>
