@@ -1,9 +1,9 @@
 <template>
   <swiper class="focus" id="focus" :options="swiperOption">
       <swiper-slide v-for="focus in focuses">
-        <a :href="focus.url">
+        <router-link :to="focus.url">
           <img :src="focus.img_src" alt="">
-        </a>
+        </router-link>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
   </swiper>

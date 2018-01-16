@@ -1,19 +1,19 @@
 <template>
   <div class="onsale">
-    <a class="onsale-main" :href="onsale.onsale_main.url">
+    <router-link class="onsale-main" :to="'/detail/'+onsale.onsale_main.pro_id">
         <span class="arrow"></span>
         <img :src="onsale.onsale_main.img_src"/>
-    </a>
+    </router-link>
     <swiper id="onsale-list" class="swiper-container onsale-list" :options="swiperOption">
       <swiper-slide v-for="pro in onsale.onsale_pro">
-        <a :href="pro.url" class="onsale-pro">
+        <router-link :to="'/detail/'+pro.pro_id" class="onsale-pro">
           <img :src="pro.img_src" alt="">
           <div class="onsale-price">
               <span class="ori-price icon-yen">{{ pro.price }}</span>
               /
               <span class="earn icon-zhuan">{{ pro.own }}</span>
           </div>
-        </a>
+        </router-link>
       </swiper-slide>
     </swiper>
   </div>

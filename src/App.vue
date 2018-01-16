@@ -2,8 +2,8 @@
   <div id="app">
     <v-header></v-header>
     <div class="content">
-      <v-footer v-show="isShowFooter"></v-footer>
       <router-view></router-view>
+      <v-footer v-show="isShowFooter"></v-footer>
     </div>
   </div>
 </template>
